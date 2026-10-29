@@ -1,0 +1,6 @@
+{
+  "name": "PackVerso - Pack Viral Frutas Falantes",
+  "description": "Página de vendas oficial do PackVerso: +50.000 cortes virais de Frutas Falantes em 3D prontos para postar e monetizar nas redes sociais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
