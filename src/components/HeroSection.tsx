@@ -61,10 +61,15 @@ export default function HeroSection() {
       {/* Primary CTA */}
       <div className="my-8 px-1">
         <a
-          href={CHECKOUT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={trackInitiateCheckout}
+          href="#oferta"
+          onClick={(e) => {
+            trackInitiateCheckout();
+            const offerEl = document.getElementById('oferta');
+            if (offerEl) {
+              e.preventDefault();
+              offerEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           className="btn-pulse-green w-full max-w-md mx-auto bg-green-500 hover:bg-green-400 text-black font-black text-xl sm:text-2xl py-4 sm:py-5 px-4 rounded-2xl shadow-[0_0_35px_rgba(34,197,94,0.8)] transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wide border-2 border-green-200 min-h-[60px]"
         >
           <span>QUERO ACESSO IMEDIATO</span>

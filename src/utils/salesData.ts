@@ -39,7 +39,9 @@ export interface FaqItem {
   answer: string;
 }
 
-export const CHECKOUT_URL = "https://pay.kirvano.com/16a7b95b-53ad-4147-acda-ecbfd0a1eff9";
+// Checkout URLs
+export const HERO_CHECKOUT_URL = "#oferta";
+export const CHECKOUT_URL = "https://pay.kirvano.com/ddac7633-64ed-4903-8087-052abc044530";
 export const YOUTUBE_VIDEO_ID = "IAw1_SA34J8";
 
 export const VIRAL_ACCOUNTS: ViralAccount[] = [

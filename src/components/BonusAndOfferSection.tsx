@@ -63,7 +63,7 @@ export default function BonusAndOfferSection() {
       </div>
 
       {/* Main Pricing Offer Card */}
-      <h2 className="text-2xl sm:text-4xl font-black text-yellow-400 uppercase tracking-tight mb-8">
+      <h2 id="oferta" className="text-2xl sm:text-4xl font-black text-yellow-400 uppercase tracking-tight mb-8 scroll-mt-8">
         ADQUIRA SEU PACK AQUI↓
       </h2>
 
