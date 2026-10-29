@@ -5,7 +5,7 @@
 
 export const META_PIXEL_ID = "1427563316187745";
 export const META_ACCESS_TOKEN =
-  "EAAXhiY72ZBSoBS6XU96JBoAJ0h1DMXGIc3Sh9z3Hq4PgORGsuq3UMkW47Izm37R16etmZCbNnER2mZBMNrb8DrHj7CXTLdxrqkyqb6c3ynMYjgqoMIQv3H7ZAauDs9SVjZAJPHZCCjVSFXV6uPj7tZAvhzcqZBZBVDSe3P9EyFPL1ZAXtb8ZCZAkHayMBiCrRTbMVgZDZD";
+  "EAAXhiY72ZBSoBS1rpaK8UZCWCT4jIzQhCZBZCnyhUoiNhlAJmSAjn1QdZAyUSeodZAObiOkgF3xOPEZCjytd64m3NvmFMr64SivRr1WIsSZC9E8r1KmbII6yqjFZBDbVMWezeDyK4m2SoKKWNwH11ex5RI7J2ZCAUkYzcTZCK0oeSTuZB7PmMBgn3N8Izz7xourUZCAZDZD";
 
 declare global {
   interface Window {
@@ -27,8 +27,14 @@ export function trackMetaEvent(
   // 1. Client-Side Meta Pixel Tracking
   if (typeof window !== "undefined" && typeof window.fbq === "function") {
     try {
-      window.fbq("track", eventName, eventData, { eventID: generatedEventId });
-      console.log(`[Meta Pixel] Tracked event: ${eventName}`, eventData);
+      window.fbq("track", eventName, {
+        value: 19.90,
+        currency: "BRL",
+        content_name: "Pack Viral Frutas Falantes",
+        content_category: "Digital Pack",
+        ...eventData
+      }, { eventID: generatedEventId });
+      console.log(`[Meta Pixel] Tracked browser event: ${eventName}`, eventData);
     } catch (err) {
       console.warn("[Meta Pixel] Client tracking error:", err);
     }
@@ -49,6 +55,8 @@ export function trackMetaEvent(
             value: 19.90,
             content_name: "Pack Viral Frutas Falantes",
             content_category: "Digital Pack",
+            content_type: "product",
+            content_ids: ["pack_frutas_1990"],
             ...eventData
           },
           user_data: {
@@ -58,30 +66,41 @@ export function trackMetaEvent(
       ]
     };
 
-    fetch(
-      `https://graph.facebook.com/v19.0/${META_PIXEL_ID}/events?access_token=${encodeURIComponent(
-        META_ACCESS_TOKEN
-      )}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("[Meta CAPI] Server event sent:", data);
+    // First try sending via local proxy API if available
+    fetch("/api/pixel-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        eventName,
+        eventData,
+        eventId: generatedEventId,
+        sourceUrl: typeof window !== "undefined" ? window.location.href : ""
       })
-      .catch((err) => {
-        console.warn("[Meta CAPI] Server event error:", err);
-      });
+    }).catch(() => {
+      // Direct Graph API fallback if proxy server is bypassed
+      fetch(
+        `https://graph.facebook.com/v19.0/${META_PIXEL_ID}/events?access_token=${encodeURIComponent(
+          META_ACCESS_TOKEN
+        )}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("[Meta CAPI Direct] Server response:", data);
+        })
+        .catch((err) => {
+          console.warn("[Meta CAPI Direct] Error:", err);
+        });
+    });
   }
 }
 
 /**
- * Tracks InitiateCheckout event on CTA clicks
+ * Tracks InitiateCheckout event when visitor clicks CTA button
  */
 export function trackInitiateCheckout() {
   trackMetaEvent("InitiateCheckout", {
@@ -91,5 +110,20 @@ export function trackInitiateCheckout() {
     value: 19.90,
     currency: "BRL",
     num_items: 1
+  });
+}
+
+/**
+ * Tracks Purchase event (Evento de Compra)
+ */
+export function trackPurchase(customValue = 19.90, transactionId?: string) {
+  trackMetaEvent("Purchase", {
+    content_name: "Pack Viral Frutas Falantes",
+    content_ids: ["pack_frutas_1990"],
+    content_type: "product",
+    value: customValue,
+    currency: "BRL",
+    num_items: 1,
+    transaction_id: transactionId || `txn_${Date.now()}`
   });
 }
