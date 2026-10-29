@@ -5,7 +5,7 @@
 
 import { Zap } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
-import { CHECKOUT_URL, YOUTUBE_VIDEO_ID } from '../utils/salesData';
+import { YOUTUBE_VIDEO_ID } from '../utils/salesData';
 import { trackInitiateCheckout } from '../utils/pixel';
 
 export default function HeroSection() {
@@ -25,7 +25,7 @@ export default function HeroSection() {
         usando milhares de cortes prontos.
       </p>
 
-      {/* Hero Mockup with Glowing Gradient border */}
+      {/* 1. Hero Mockup (Primeira Foto) */}
       <div className="relative my-6 max-w-md mx-auto group px-0.5">
         <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 via-yellow-300 to-green-500 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
         <div className="relative bg-black p-3 sm:p-4 rounded-3xl border-2 border-yellow-500/50 shadow-2xl">
@@ -37,7 +37,17 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Pricing block */}
+      {/* 2. VSL / Video Player (Direto embaixo da primeira foto) */}
+      <div className="my-8 sm:my-10 max-w-md mx-auto px-2">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-yellow-400 uppercase tracking-tight mb-4 drop-shadow-[0_2px_8px_rgba(234,179,8,0.4)]">
+          VÍDEO QUE PREPARAMOS PARA VOCÊ
+        </h2>
+        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-yellow-500/50 shadow-[0_0_25px_rgba(234,179,8,0.25)] bg-zinc-950 aspect-[9/16] max-h-[580px] mx-auto">
+          <VideoPlayer videoId={YOUTUBE_VIDEO_ID} />
+        </div>
+      </div>
+
+      {/* 3. Pricing Block */}
       <div className="my-6 flex flex-col items-center justify-center font-sans">
         <div className="flex items-center gap-2">
           <span className="italic font-black text-white text-3xl sm:text-4xl tracking-tight">
@@ -58,7 +68,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Primary CTA */}
+      {/* 4. Primary CTA (Quero Acesso Imediato) */}
       <div className="my-8 px-1">
         <a
           href="#oferta"
@@ -77,7 +87,7 @@ export default function HeroSection() {
         </a>
       </div>
 
-      {/* 4 Key Selling Points with matching icons */}
+      {/* 5. Key Selling Points List */}
       <div className="my-8 sm:my-10 max-w-xl mx-auto flex flex-col gap-4 text-left px-2 sm:px-0">
         <div className="flex items-center gap-3 sm:gap-4 justify-start">
           <svg viewBox="0 0 24 24" className="w-8 h-8 sm:w-10 sm:h-10 shrink-0">
@@ -152,16 +162,6 @@ export default function HeroSection() {
           <span className="text-[22px] sm:text-[28px] text-white font-bold italic tracking-tight leading-tight whitespace-nowrap">
             Entrega Imediata no WHATSAPP
           </span>
-        </div>
-      </div>
-
-      {/* Video Presentation Section */}
-      <div className="my-10 sm:my-12 max-w-md mx-auto px-2">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-yellow-400 uppercase tracking-tight mb-4 drop-shadow-[0_2px_8px_rgba(234,179,8,0.4)]">
-          VÍDEO QUE PREPARAMOS PARA VOCÊ
-        </h2>
-        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-yellow-500/50 shadow-[0_0_25px_rgba(234,179,8,0.25)] bg-zinc-950 aspect-[9/16] max-h-[580px] mx-auto">
-          <VideoPlayer videoId={YOUTUBE_VIDEO_ID} />
         </div>
       </div>
     </section>
