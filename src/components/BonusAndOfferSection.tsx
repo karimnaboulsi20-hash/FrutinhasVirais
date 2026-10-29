@@ -12,6 +12,7 @@ import {
   Zap
 } from 'lucide-react';
 import { CHECKOUT_URL } from '../utils/salesData';
+import { trackInitiateCheckout } from '../utils/pixel';
 
 const ASSURANCES = [
   'Não precisa aparecer',
@@ -174,6 +175,7 @@ export default function BonusAndOfferSection() {
             href={CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackInitiateCheckout}
             className="btn-pulse-green w-full bg-green-500 hover:bg-green-400 text-black font-black py-4 sm:py-5 px-5 rounded-2xl text-lg sm:text-2xl uppercase transition cursor-pointer shadow-[0_0_35px_rgba(34,197,94,0.7)] flex items-center justify-center gap-2.5 tracking-wide text-center min-h-[60px]"
           >
             <span>QUERO MEU ACESSO AGORA</span>

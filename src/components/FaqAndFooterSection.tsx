@@ -11,6 +11,7 @@ import {
   CirclePlay
 } from 'lucide-react';
 import { FAQ_ITEMS, CHECKOUT_URL } from '../utils/salesData';
+import { trackInitiateCheckout } from '../utils/pixel';
 import LegalModal from './LegalModal';
 
 export default function FaqAndFooterSection() {
@@ -86,6 +87,7 @@ export default function FaqAndFooterSection() {
           href={CHECKOUT_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={trackInitiateCheckout}
           className="btn-pulse-green w-full max-w-md mx-auto bg-green-500 hover:bg-green-400 text-black font-black text-xl sm:text-2xl py-4 sm:py-5 px-6 rounded-2xl shadow-[0_0_35px_rgba(34,197,94,0.8)] transition cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wide border-2 border-green-200 min-h-[60px]"
         >
           QUERO MEU ACESSO AGORA
