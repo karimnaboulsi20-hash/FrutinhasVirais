@@ -30,7 +30,7 @@ test('formatBRL formats Brazilian currency correctly', () => {
 });
 
 test('sales dataset integrity check', () => {
-  assert.equal(VIRAL_ACCOUNTS.length, 3);
+  assert.equal(VIRAL_ACCOUNTS.length, 2);
   assert.equal(MOTIVE_ITEMS.length, 10);
   assert.equal(TESTIMONIALS.length, 3);
   assert.equal(FAQ_ITEMS.length, 4);

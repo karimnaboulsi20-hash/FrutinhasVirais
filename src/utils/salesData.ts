@@ -70,18 +70,6 @@ export const VIRAL_ACCOUNTS: ViralAccount[] = [
 ✉️ Parcerias via direct
 👇 Acesse aqui 🚀 para seu 1º vídeo...`,
     avatarUrl: "/assets/instagram_historinhasdasfrutas.jpg"
-  },
-  {
-    username: "fruti.novela",
-    title: "Frutalia",
-    posts: "109",
-    followers: "228 mil",
-    following: "1",
-    category: "Criador(a) de conteúdo digital",
-    bio: `CRBRAM4S
-Prueba dreamina agora 👉
-https://bit.ly/4wnZTRw`,
-    avatarUrl: "/assets/instagram_fruti_novela.jpg"
   }
 ];
 

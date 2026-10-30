@@ -16,8 +16,10 @@ interface LightboxState {
 export default function SocialProofCarousel() {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
 
-  // Repeat the 3 accounts 4 times (12 items) so the infinite marquee glides seamlessly on all screens
+  // Repeat the accounts so the infinite marquee glides seamlessly on all screens
   const marqueeAccounts: ViralAccount[] = [
+    ...VIRAL_ACCOUNTS,
+    ...VIRAL_ACCOUNTS,
     ...VIRAL_ACCOUNTS,
     ...VIRAL_ACCOUNTS,
     ...VIRAL_ACCOUNTS,
