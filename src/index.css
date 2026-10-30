@@ -86,8 +86,3 @@ body {
   animation: marqueeLeft 28s linear infinite;
   will-change: transform;
 }
-
-.animate-marquee-slow:hover,
-.animate-marquee-slow:active {
-  animation-play-state: paused;
-}

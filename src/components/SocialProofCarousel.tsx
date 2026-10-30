@@ -97,12 +97,6 @@ export default function SocialProofCarousel() {
               </div>
             ))}
           </div>
-
-          {/* Sub-label explaining continuous motion */}
-          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-zinc-400 font-semibold uppercase tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span>Passando automaticamente • Passe o mouse ou toque para pausar</span>
-          </div>
         </div>
       </div>
 
