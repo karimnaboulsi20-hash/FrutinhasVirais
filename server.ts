@@ -10,12 +10,16 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-const META_PIXEL_ID = "1427563316187745";
-const META_ACCESS_TOKEN =
-  "EAAXhiY72ZBSoBS1rpaK8UZCWCT4jIzQhCZBZCnyhUoiNhlAJmSAjn1QdZAyUSeodZAObiOkgF3xOPEZCjytd64m3NvmFMr64SivRr1WIsSZC9E8r1KmbII6yqjFZBDbVMWezeDyK4m2SoKKWNwH11ex5RI7J2ZCAUkYzcTZCK0oeSTuZB7PmMBgn3N8Izz7xourUZCAZDZD";
+const META_PIXEL_ID = process.env.META_PIXEL_ID || '1427563316187745';
+const META_ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
 
-// Proxy endpoint for Meta Conversions API (CAPI) to avoid CORS or adblock issues
+// Proxy endpoint for Meta Conversions API (CAPI) in local Express environment
 app.post('/api/pixel-event', async (req, res) => {
+  if (!META_ACCESS_TOKEN) {
+    console.warn('[CAPI Local Proxy] META_ACCESS_TOKEN environment variable not set');
+    return res.status(500).json({ error: 'META_ACCESS_TOKEN environment variable not set' });
+  }
+
   try {
     const { eventName, eventData, eventId, sourceUrl } = req.body;
 
@@ -38,7 +42,7 @@ app.post('/api/pixel-event', async (req, res) => {
           },
           user_data: {
             client_user_agent: req.headers['user-agent'] || '',
-            client_ip_address: req.ip || req.headers['x-forwarded-for'] || ''
+            client_ip_address: (req.headers['x-forwarded-for'] as string) || req.ip || ''
           }
         }
       ]
@@ -53,8 +57,7 @@ app.post('/api/pixel-event', async (req, res) => {
     });
 
     const result = await response.json();
-    console.log(`[CAPI Server Proxy] Event ${eventName}:`, result);
-    return res.json({ success: true, metaResponse: result });
+    return res.json({ success: response.ok, metaResponse: result });
   } catch (error) {
     console.error('[CAPI Server Proxy Error]:', error);
     return res.status(500).json({ error: 'Failed to send Meta event' });

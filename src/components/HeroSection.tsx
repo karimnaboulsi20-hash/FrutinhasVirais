@@ -3,12 +3,38 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Zap } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Zap, Eye, ArrowDown } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 import { YOUTUBE_VIDEO_ID } from '../utils/salesData';
 import { trackInitiateCheckout } from '../utils/pixel';
 
 export default function HeroSection() {
+  // Live random viewer count between 100 and 300
+  const [viewerCount, setViewerCount] = useState(() => Math.floor(Math.random() * (300 - 100 + 1)) + 100);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setViewerCount((prev) => {
+        const delta = Math.floor(Math.random() * 9) - 4; // -4 to +4 fluctuation
+        const next = prev + delta;
+        if (next < 100) return 108;
+        if (next > 300) return 292;
+        return next;
+      });
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToSocialProof = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const proofEl = document.getElementById('prova-social');
+    if (proofEl) {
+      proofEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative pt-4 sm:pt-8 pb-10 sm:pb-12 px-1 sm:px-4 md:px-6 max-w-5xl mx-auto text-center overflow-hidden w-full">
       {/* Main Headline */}
@@ -37,8 +63,15 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 2. VSL / Video Player (Direto embaixo da primeira foto) */}
+      {/* 2. VSL / Video Player (Com contagem de pessoas assistindo em vermelho direto em cima) */}
       <div className="my-8 sm:my-10 max-w-md mx-auto px-2">
+        {/* Live viewers indicator in red */}
+        <div className="inline-flex items-center justify-center gap-2 bg-red-950/70 border border-red-600/70 py-1.5 px-4 rounded-full text-red-500 font-black text-xs sm:text-sm uppercase tracking-wide mb-3 shadow-[0_0_15px_rgba(220,38,38,0.4)]">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse shadow-[0_0_8px_rgba(239,68,68,1)] shrink-0" />
+          <span className="text-red-500 font-black text-sm">{viewerCount}</span>
+          <span className="text-red-500">pessoas assistindo agora</span>
+        </div>
+
         <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-yellow-400 uppercase tracking-tight mb-4 drop-shadow-[0_2px_8px_rgba(234,179,8,0.4)]">
           VÍDEO QUE PREPARAMOS PARA VOCÊ
         </h2>
@@ -68,8 +101,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 4. Primary CTA (Quero Acesso Imediato) */}
-      <div className="my-8 px-1">
+      {/* 4. Primary CTA (Quero Acesso Imediato) + Botão menor para Prova Social */}
+      <div className="my-8 px-1 flex flex-col items-center gap-3">
         <a
           href="#oferta"
           onClick={(e) => {
@@ -85,6 +118,16 @@ export default function HeroSection() {
           <span>QUERO ACESSO IMEDIATO</span>
           <Zap className="w-7 h-7 fill-black shrink-0" />
         </a>
+
+        {/* Botão menor diretamente embaixo do checkout para ir direto à prova social */}
+        <button
+          onClick={scrollToSocialProof}
+          className="w-full max-w-md mx-auto bg-yellow-400/15 hover:bg-yellow-400/25 text-yellow-300 hover:text-yellow-200 border border-yellow-400/50 hover:border-yellow-400 font-extrabold text-xs sm:text-sm py-2.5 px-4 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wide shadow-lg group active:scale-98"
+        >
+          <Eye className="w-4 h-4 text-yellow-400 group-hover:scale-110 transition-transform shrink-0" />
+          <span>Veja pessoas reais que não perderam tempo</span>
+          <ArrowDown className="w-4 h-4 text-yellow-400 group-hover:translate-y-0.5 transition-transform shrink-0" />
+        </button>
       </div>
 
       {/* 5. Key Selling Points List */}

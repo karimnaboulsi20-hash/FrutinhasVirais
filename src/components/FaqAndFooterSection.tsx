@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { FAQ_ITEMS, CHECKOUT_URL } from '../utils/salesData';
 import { trackInitiateCheckout } from '../utils/pixel';
+import { getCheckoutUrlWithParams } from '../utils/url';
 import LegalModal from './LegalModal';
 
 export default function FaqAndFooterSection() {
@@ -84,7 +85,7 @@ export default function FaqAndFooterSection() {
         </p>
 
         <a
-          href={CHECKOUT_URL}
+          href={getCheckoutUrlWithParams(CHECKOUT_URL)}
           target="_blank"
           rel="noopener noreferrer"
           onClick={trackInitiateCheckout}

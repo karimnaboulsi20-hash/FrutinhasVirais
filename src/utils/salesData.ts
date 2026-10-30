@@ -59,19 +59,6 @@ export const VIRAL_ACCOUNTS: ViralAccount[] = [
     avatarUrl: "/assets/real_screenshot_frutas_historia-CJLbW6nZ.jpg"
   },
   {
-    username: "historia_.ia",
-    title: "HISTÓRIA DAS FRUTAS",
-    posts: "92",
-    followers: "296 mil",
-    following: "0",
-    category: "Criador(a) de conteúdo digital",
-    bio: `🍎 Você vai maratonar frutas sem perceber
-🍇 Episódios rápidos e viciantes
-🔥 Quem segue não perde os próximos
-👇 Sigam a página agora`,
-    avatarUrl: "/assets/real_user_instagram_screenshot-BKJu78VL.jpg"
-  },
-  {
     username: "historinhasdasfrutas",
     title: "Isael Junior | Historia Das Frutas",
     posts: "148",
@@ -82,7 +69,19 @@ export const VIRAL_ACCOUNTS: ViralAccount[] = [
 🎬 Drama, plot twist e finais que prendem
 ✉️ Parcerias via direct
 👇 Acesse aqui 🚀 para seu 1º vídeo...`,
-    avatarUrl: "/assets/real_screenshot_frutas_historia-CJLbW6nZ.jpg"
+    avatarUrl: "/assets/real_user_instagram_screenshot-BKJu78VL.jpg"
+  },
+  {
+    username: "fruti.novela",
+    title: "Frutalia",
+    posts: "109",
+    followers: "228 mil",
+    following: "1",
+    category: "Criador(a) de conteúdo digital",
+    bio: `CRBRAM4S
+Prueba dreamina agora 👉
+https://bit.ly/4wnZTRw`,
+    avatarUrl: "/assets/fruti_novela_screenshot.jpg"
   }
 ];
 
@@ -166,6 +165,46 @@ export const MOTIVE_ITEMS: MotiveItem[] = [
     description: "Acesse todo o acervo em alta qualidade pelo Google Drive. Funciona perfeitamente em qualquer smartphone ou computador.",
     imageUrl: "/assets/frutas_manga_celular_1786297611570-CeJOfSWM.jpg",
     iconName: "Smartphone"
+  }
+];
+
+export interface RealPeopleProofItem {
+  id: string;
+  title: string;
+  resultText: string;
+  imageUrl: string;
+}
+
+export const REAL_PEOPLE_PROOF: RealPeopleProofItem[] = [
+  {
+    id: '1',
+    title: 'Jefferson Santos',
+    resultText: 'R$ 10.842,61 em 28 dias',
+    imageUrl: '/assets/aistudio/15A09D17-3AE4-4038-9C55-9F5608BC69C8_ee0c95bc.jpg'
+  },
+  {
+    id: '2',
+    title: 'Mentalidade Alfa',
+    resultText: 'US$ 3.421,17 em 28 dias',
+    imageUrl: '/assets/aistudio/509F30C9-6BA9-48DD-B8E8-AB8FB830A136_c1f64d86.png'
+  },
+  {
+    id: '3',
+    title: 'Poder Digital',
+    resultText: '€ 5.892,85 em 28 dias',
+    imageUrl: '/assets/aistudio/67ABB4DC-AB78-4D1D-AD3A-0A0DBCA83205_b0b9e57a.png'
+  },
+  {
+    id: '4',
+    title: 'Trilha Livre',
+    resultText: 'R$ 6.482,15 em 28 dias',
+    imageUrl: '/assets/aistudio/C929D58F-F17A-4488-8B26-79CA80C5B0EC_03451255.png'
+  },
+  {
+    id: '5',
+    title: 'Império Digital',
+    resultText: 'R$ 8.764,32 em 28 dias',
+    imageUrl: '/assets/aistudio/6518C8B7-610F-4536-8EEA-63D0440DAAF7_0fb170f3.png'
   }
 ];
 

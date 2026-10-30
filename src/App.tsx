@@ -6,8 +6,8 @@
 import { useState, useEffect } from 'react';
 import HeroSection from './components/HeroSection';
 import SocialProofCarousel from './components/SocialProofCarousel';
-import MotivesSection from './components/MotivesSection';
 import TestimonialsSection from './components/TestimonialsSection';
+import MotivesSection from './components/MotivesSection';
 import BonusAndOfferSection from './components/BonusAndOfferSection';
 import FaqAndFooterSection from './components/FaqAndFooterSection';
 import ThankYouPage from './components/ThankYouPage';
@@ -42,8 +42,8 @@ export default function App() {
       <main>
         <HeroSection />
         <SocialProofCarousel />
-        <MotivesSection />
         <TestimonialsSection />
+        <MotivesSection />
         <BonusAndOfferSection />
         <FaqAndFooterSection />
       </main>

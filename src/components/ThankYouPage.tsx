@@ -3,31 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect, useRef } from 'react';
 import { CheckCircle2, ShieldCheck, Sparkles, MessageCircle, Home } from 'lucide-react';
-import { trackPurchase } from '../utils/pixel';
 
 interface ThankYouPageProps {
   onReturnHome?: () => void;
 }
 
 export default function ThankYouPage({ onReturnHome }: ThankYouPageProps) {
-  const hasTrackedRef = useRef(false);
-
-  useEffect(() => {
-    if (!hasTrackedRef.current) {
-      hasTrackedRef.current = true;
-      // Extract optional transaction ID from URL params if present
-      const urlParams = new URLSearchParams(window.location.search);
-      const txnId = urlParams.get('transaction_id') || urlParams.get('id') || urlParams.get('tid') || undefined;
-      const rawPrice = urlParams.get('amount') || urlParams.get('price') || '19.90';
-      const parsedPrice = parseFloat(rawPrice) || 19.90;
-
-      trackPurchase(parsedPrice, txnId);
-      console.log('✅ [Purchase Tracking] Fired Purchase event (R$ ' + parsedPrice + ')');
-    }
-  }, []);
-
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4 sm:p-6 text-center font-sans">
       <div className="max-w-xl w-full bg-zinc-950 border-2 border-green-500/80 rounded-3xl p-6 sm:p-10 shadow-[0_0_50px_rgba(34,197,94,0.35)] relative overflow-hidden">
