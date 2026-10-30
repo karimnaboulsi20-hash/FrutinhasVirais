@@ -9,9 +9,7 @@ import {
   Flame,
   Sparkles,
   ShieldCheck,
-  Zap,
-  Eye,
-  ArrowDown
+  Zap
 } from 'lucide-react';
 import { CHECKOUT_URL } from '../utils/salesData';
 import { trackInitiateCheckout } from '../utils/pixel';
@@ -184,24 +182,6 @@ export default function BonusAndOfferSection() {
             <span>QUERO MEU ACESSO AGORA</span>
             <Zap className="w-6 h-6 fill-black shrink-0" />
           </a>
-
-          {/* Botão menor diretamente embaixo do checkout para ir direto à prova social */}
-          <div className="mt-3">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                const proofEl = document.getElementById('prova-social');
-                if (proofEl) {
-                  proofEl.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="w-full bg-yellow-400/15 hover:bg-yellow-400/25 text-yellow-300 hover:text-yellow-200 border border-yellow-400/50 hover:border-yellow-400 font-extrabold text-xs sm:text-sm py-2.5 px-4 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wide shadow-lg group active:scale-98"
-            >
-              <Eye className="w-4 h-4 text-yellow-400 group-hover:scale-110 transition-transform shrink-0" />
-              <span>Veja pessoas reais que não perderam tempo</span>
-              <ArrowDown className="w-4 h-4 text-yellow-400 group-hover:translate-y-0.5 transition-transform shrink-0" />
-            </button>
-          </div>
 
           <p className="text-xs text-zinc-400 font-semibold mt-3">
             🔒 Compra 100% Segura • Acesso imediato no seu e-mail e WhatsApp

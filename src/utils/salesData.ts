@@ -56,7 +56,7 @@ export const VIRAL_ACCOUNTS: ViralAccount[] = [
 🍇 Episódios rápidos e viciantes
 🔥 Quem segue não perde os próximos
 👇 Sigam a página agora`,
-    avatarUrl: "/assets/real_screenshot_frutas_historia-CJLbW6nZ.jpg"
+    avatarUrl: "/assets/instagram_frutas_historia.jpg"
   },
   {
     username: "historinhasdasfrutas",
@@ -69,7 +69,7 @@ export const VIRAL_ACCOUNTS: ViralAccount[] = [
 🎬 Drama, plot twist e finais que prendem
 ✉️ Parcerias via direct
 👇 Acesse aqui 🚀 para seu 1º vídeo...`,
-    avatarUrl: "/assets/real_user_instagram_screenshot-BKJu78VL.jpg"
+    avatarUrl: "/assets/instagram_historinhasdasfrutas.jpg"
   },
   {
     username: "fruti.novela",
@@ -81,7 +81,7 @@ export const VIRAL_ACCOUNTS: ViralAccount[] = [
     bio: `CRBRAM4S
 Prueba dreamina agora 👉
 https://bit.ly/4wnZTRw`,
-    avatarUrl: "/assets/fruti_novela_screenshot.jpg"
+    avatarUrl: "/assets/instagram_fruti_novela.jpg"
   }
 ];
 
